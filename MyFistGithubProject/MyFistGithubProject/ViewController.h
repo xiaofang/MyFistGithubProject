@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-
+@property (nonatomic,copy) void(^testBlock)(void);
+@property (nonatomic,strong)NSTimer *timer;
 
 @end
 
