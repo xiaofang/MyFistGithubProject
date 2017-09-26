@@ -13,12 +13,12 @@
 #import "CustomView+test.h"
 #import <objc/runtime.h>
 #import "FirstPageViewController.h"
+
 #define __MainScreenFrame   [[UIScreen mainScreen] bounds]
 #define __MainScreen_Width  ((__MainScreenFrame.size.width)<(__MainScreenFrame.size.height)?(__MainScreenFrame.size.width):(__MainScreenFrame.size.height))
 #define __MainScreen_Height ((__MainScreenFrame.size.height)>(__MainScreenFrame.size.width)?(__MainScreenFrame.size.height):(__MainScreenFrame.size.width))
-#define kColor249 [UIColor colorWithRed:249/255.0 green:249/255.0 blue:249/255.0 alpha:1.0]
 #define DOWNLOAD_ANIMATIONENDX (__MainScreen_Width-96)
-
+#define kColor249 [UIColor colorWithRed:249/255.0 green:249/255.0 blue:249/255.0 alpha:1.0]
 @interface ViewController (){
     NSObject * _object;
 }
@@ -35,6 +35,8 @@
 @property (nonatomic,strong)UIImageView *loadingView;
 @property (nonatomic,strong)UIView *rotateView;
 @property (nonatomic,strong)UILabel *rotateLabel;
+@property(nonatomic,strong)UIButton *universalLinkButton;
+@property(nonatomic,strong)UIButton *loadHtmlButton;
 
 
 
@@ -72,7 +74,7 @@ NSLog(@"\\n 定以后：------------------------------------\\n\\
       _startRecordButton.layer.cornerRadius = 5;
       _startRecordButton.layer.borderWidth = 0.5;
       _startRecordButton.layer.borderColor = [UIColor colorWithRed:231/255.0 green:231/255.0 blue:231/255.0 alpha:1.0].CGColor;
-      [self.view addSubview:self.startRecordButton];
+//      [self.view addSubview:self.startRecordButton];
       
       _startPlayButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 400, 300, 40)];
       [_startPlayButton setTitle:@"播放录音" forState:UIControlStateNormal];
@@ -82,7 +84,21 @@ NSLog(@"\\n 定以后：------------------------------------\\n\\
       _startPlayButton.layer.cornerRadius = 5;
       _startPlayButton.layer.borderWidth = 0.5;
       _startPlayButton.layer.borderColor = [UIColor colorWithRed:231/255.0 green:231/255.0 blue:231/255.0 alpha:1.0].CGColor;
-      [self.view addSubview:self.startPlayButton];
+//      [self.view addSubview:self.startPlayButton];
+      
+      _universalLinkButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 100, 300, 40)];
+      [_universalLinkButton setTitle:@"test universal Links" forState:UIControlStateNormal];
+      [_universalLinkButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+      _universalLinkButton.tag = 1000;
+      [_universalLinkButton addTarget:self action:@selector(handButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+      [self.view addSubview:self.universalLinkButton];
+      
+      _loadHtmlButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 170, 300, 40)];
+      [_loadHtmlButton setTitle:@"test cache html" forState:UIControlStateNormal];
+      [_loadHtmlButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+      _loadHtmlButton.tag = 1001;
+      [_loadHtmlButton addTarget:self action:@selector(handButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+      [self.view addSubview:self.loadHtmlButton];
       
   }
   - (void)startPlayCord:(UIButton*)button{
@@ -167,7 +183,32 @@ NSLog(@"\\n 定以后：------------------------------------\\n\\
       
       
   }
-  
+-(void)handButtonClick:(UIButton *)button{
+//    NSURL *url = [NSURL URLWithString:@"https://app.simuyun.com/app6.0/biz/mine/mine_active_list.html"];
+//    [[UIApplication sharedApplication] openURL:url  options:[NSDictionary dictionary] completionHandler:^(BOOL success) {
+//        
+//    }];
+    switch(button.tag){
+        case 1000:{
+            FirstPageViewController *viewController = [[FirstPageViewController alloc] init];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
+        break;
+        case 1001:{
+            FirstPageViewController *viewController = [[FirstPageViewController alloc] init];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
+        break;
+        
+        default:{
+            FirstPageViewController *viewController = [[FirstPageViewController alloc] init];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
+        break;
+            
+    }
+    
+}
   
   
   
@@ -197,17 +238,17 @@ NSLog(@"\\n 定以后：------------------------------------\\n\\
       [self testCategoryMethod];
       
       
-      [self testRotate];
-      self.testBlock = ^{
-          
-          self.rotateLabel.text = @"test leak";
-      };
-      
-      self.testBlock();
-      self.timer = [NSTimer scheduledTimerWithTimeInterval:2.f repeats:YES block:^(NSTimer * _Nonnull timer) {
-          NSLog(@"=====timer block");
-      }];
-      [self.timer fire];
+//      [self testRotate];
+//      self.testBlock = ^{
+//          
+//          self.rotateLabel.text = @"test leak";
+//      };
+//      
+//      self.testBlock();
+//      self.timer = [NSTimer scheduledTimerWithTimeInterval:2.f repeats:YES block:^(NSTimer * _Nonnull timer) {
+//          NSLog(@"=====timer block");
+//      }];
+//      [self.timer fire];
       
       
       //    for(int i= 0;i< 100000;i++){

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "PrefixHeader.pch"
 @interface AppDelegate ()
 @property(nonatomic,strong)ViewController *rootViewController;
 @end

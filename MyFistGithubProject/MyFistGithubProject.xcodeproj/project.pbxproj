@@ -21,6 +21,8 @@
 		4D9288BA57A1EAFB5BE7D0FB /* libPods-MyFistGithubProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CBD9BD87065612CACD2728D /* libPods-MyFistGithubProject.a */; };
 		752250091F5E771000BC4A1C /* FirstPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 752250081F5E771000BC4A1C /* FirstPageViewController.m */; };
 		7522500C1F5E7F3C00BC4A1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7522500A1F5E7F3C00BC4A1C /* Main.storyboard */; };
+		7542A8371F66743800871953 /* YTImagePlaceHolderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7542A8361F66743800871953 /* YTImagePlaceHolderManager.m */; };
+		75D316241F5FFC65003DFFF7 /* jumpApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 75D316231F5FFC65003DFFF7 /* jumpApp.html */; };
 		FD004FEAE915471E5422D6B9 /* libPods-MyFistGithubProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3340295963BDC0BE6BD038B8 /* libPods-MyFistGithubProjectTests.a */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,10 @@
 		752250071F5E771000BC4A1C /* FirstPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstPageViewController.h; sourceTree = "<group>"; };
 		752250081F5E771000BC4A1C /* FirstPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstPageViewController.m; sourceTree = "<group>"; };
 		7522500B1F5E7F3C00BC4A1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7542A8351F66743800871953 /* YTImagePlaceHolderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTImagePlaceHolderManager.h; sourceTree = "<group>"; };
+		7542A8361F66743800871953 /* YTImagePlaceHolderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTImagePlaceHolderManager.m; sourceTree = "<group>"; };
+		7542A8381F677EC300871953 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		75D316231F5FFC65003DFFF7 /* jumpApp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jumpApp.html; sourceTree = "<group>"; };
 		7CBD9BD87065612CACD2728D /* libPods-MyFistGithubProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyFistGithubProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7153CBB2DBE62C9E8F3412B /* Pods-MyFistGithubProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFistGithubProjectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFistGithubProjectUITests/Pods-MyFistGithubProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B89EAAD86C89381F4E0132D5 /* Pods-MyFistGithubProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFistGithubProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFistGithubProject/Pods-MyFistGithubProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +127,7 @@
 				0E45023F1F21D3E1005C7B6C /* MyFistGithubProjectTests */,
 				0E45024A1F21D3E1005C7B6C /* MyFistGithubProjectUITests */,
 				0E4502211F21D3E1005C7B6C /* Products */,
+				75D316231F5FFC65003DFFF7 /* jumpApp.html */,
 				BDA9147E3B0B5934FC7C3F62 /* Pods */,
 				0CD90BD479F0C210CF6686D6 /* Frameworks */,
 			);
@@ -139,6 +146,7 @@
 		0E4502221F21D3E1005C7B6C /* MyFistGithubProject */ = {
 			isa = PBXGroup;
 			children = (
+				7542A8341F66742000871953 /* tools */,
 				7522500A1F5E7F3C00BC4A1C /* Main.storyboard */,
 				0E4502261F21D3E1005C7B6C /* AppDelegate.h */,
 				0E4502271F21D3E1005C7B6C /* AppDelegate.m */,
@@ -155,6 +163,7 @@
 				0E4502371F21D3E1005C7B6C /* Info.plist */,
 				0E45022F1F21D3E1005C7B6C /* MyFistGithubProject.xcdatamodeld */,
 				0E4502231F21D3E1005C7B6C /* Supporting Files */,
+				7542A8381F677EC300871953 /* PrefixHeader.pch */,
 			);
 			path = MyFistGithubProject;
 			sourceTree = "<group>";
@@ -183,6 +192,15 @@
 				0E45024D1F21D3E1005C7B6C /* Info.plist */,
 			);
 			path = MyFistGithubProjectUITests;
+			sourceTree = "<group>";
+		};
+		7542A8341F66742000871953 /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				7542A8351F66743800871953 /* YTImagePlaceHolderManager.h */,
+				7542A8361F66743800871953 /* YTImagePlaceHolderManager.m */,
+			);
+			path = tools;
 			sourceTree = "<group>";
 		};
 		BDA9147E3B0B5934FC7C3F62 /* Pods */ = {
@@ -274,6 +292,7 @@
 				TargetAttributes = {
 					0E45021F1F21D3E1005C7B6C = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = H38DYSL82Z;
 						ProvisioningStyle = Automatic;
 					};
 					0E45023B1F21D3E1005C7B6C = {
@@ -315,6 +334,7 @@
 			files = (
 				7522500C1F5E7F3C00BC4A1C /* Main.storyboard in Resources */,
 				0E4502361F21D3E1005C7B6C /* LaunchScreen.storyboard in Resources */,
+				75D316241F5FFC65003DFFF7 /* jumpApp.html in Resources */,
 				0E4502331F21D3E1005C7B6C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,6 +511,7 @@
 				0E4502311F21D3E1005C7B6C /* MyFistGithubProject.xcdatamodeld in Sources */,
 				0E45022B1F21D3E1005C7B6C /* ViewController.m in Sources */,
 				0E4502281F21D3E1005C7B6C /* AppDelegate.m in Sources */,
+				7542A8371F66743800871953 /* YTImagePlaceHolderManager.m in Sources */,
 				752250091F5E771000BC4A1C /* FirstPageViewController.m in Sources */,
 				0E4502251F21D3E1005C7B6C /* main.m in Sources */,
 				0E45025E1F21D445005C7B6C /* CustomView+test.m in Sources */,
@@ -641,7 +662,9 @@
 			baseConfigurationReference = B89EAAD86C89381F4E0132D5 /* Pods-MyFistGithubProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H38DYSL82Z;
 				INFOPLIST_FILE = MyFistGithubProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zyf.MyFistGithubProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -653,7 +676,9 @@
 			baseConfigurationReference = D61F497FC0F966B59A55E120 /* Pods-MyFistGithubProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H38DYSL82Z;
 				INFOPLIST_FILE = MyFistGithubProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zyf.MyFistGithubProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
