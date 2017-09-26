@@ -9,6 +9,8 @@
 #import "FirstPageViewController.h"
 #import "UIImageView+WebCache.h"
 #import "YTImagePlaceHolderManager.h"
+#import <WebKit/WebKit.h>
+#import "FLBaseWebController.h"
 
 @interface FirstPageViewController ()<UIWebViewDelegate>
 @property (nonatomic,strong)UILabel *rotateLabel;
@@ -19,6 +21,7 @@
 @property (nonatomic,strong)UIButton *startButton;
 @property (nonatomic,copy) NSString * urlStr;
 @property (nonatomic,strong)UIWebView *webView;
+@property (nonatomic,strong)WKWebView *wkWebView;
 @end
 
 @implementation FirstPageViewController
@@ -28,6 +31,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"二级页面";
     _urlStr = @"https://app.simuyun.com/app6.0/biz/mine/mine-help.html";
+//    _urlStr = @"https://app.simuyun.com//app6.0/biz/assesment/index.html";
+//    _urlStr = @"https://app.simuyun.com/app6.0/biz/product/new_detail_toc.html?id=150611c699c14587965ca9b89a1a95b4&category=6&share=1&type=1&userid=46669bc4f1c346609186a7154ba2980b&from=singlemessage&isappinstalled=1";
+//    _urlStr = @"https://app.simuyun.com/app6.0/biz/product/new_detail_toc.html?id=06a60d3cac89494e99036b3b930d23ef&category=7";
     [self initSubviews];
     _backButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 500, 300, 40)];
     [_backButton setTitle:@"返回" forState:UIControlStateNormal];
@@ -36,12 +42,12 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backClick:)];
     
 //    [self.view addSubview:_backButton];
-    __weak typeof(self) weakself = self;
-    self.testBlock = ^{
-        
-        [weakself.backButton setTitle:@"test" forState:UIControlStateNormal];
-    };
-    self.testBlock();
+//    __weak typeof(self) weakself = self;
+//    self.testBlock = ^{
+//
+//        [weakself.backButton setTitle:@"test" forState:UIControlStateNormal];
+//    };
+//    self.testBlock();
     
 //    self.timer = [NSTimer scheduledTimerWithTimeInterval:2.f target:self selector:@selector(log) userInfo:nil repeats:YES];
 //    [self.timer fire];
@@ -67,7 +73,6 @@
     [self.startButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [self.view addSubview:self.startButton];
     */
-    /* 测试Universal link
     UIWebView *webview = [[UIWebView alloc] initWithFrame:self.view.bounds];
     NSString *path = [[NSBundle mainBundle] bundlePath];
     NSURL *baseURL = [NSURL fileURLWithPath:path];
@@ -78,22 +83,42 @@
                                                        error:nil];
     [webview loadHTMLString:htmlCont baseURL:baseURL];
     [self.view addSubview:webview];
-    */
     
-    _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-    _webView.delegate = self;
-    [self.view addSubview:_webView];
+   
+    
+//    _wkWebView.scrollView.delegate = self;
+//    _wkWebView.UIDelegate = self;
+//    _wkWebView.navigationDelegate = self;
+//    _wkWebView.allowsBackForwardNavigationGestures = YES;
+//    NSURL *url = [NSURL URLWithString:_urlStr];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    [_wkWebView loadRequest:request];
+//    [self.view addSubview:_wkWebView];
+//
+    
+//    FLBaseWebController *webViewController = [[FLBaseWebController alloc] initWithURLStr:_urlStr title:@"test"];
+//    [self.navigationController pushViewController:webViewController animated:YES];
+    
+    /* 测试 webview 加载html
+    WKWebViewConfiguration * configuration = [[WKWebViewConfiguration alloc]init];
+    configuration.processPool = [[WKProcessPool alloc] init];
+    
+    WKUserContentController *userC = [[WKUserContentController alloc] init];
+    configuration.userContentController = userC;
+    _wkWebView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:configuration];
+    [self.view addSubview:_wkWebView];
     NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask,YES) objectAtIndex:0];
-    NSString * path = [cachesPath stringByAppendingString:[NSString stringWithFormat:@"/Caches/healthProject.html"]];
+    NSString * path = [cachesPath stringByAppendingString:[NSString stringWithFormat:@"/Caches/health.html"]];
     NSString *htmlString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     if (!(htmlString ==nil || [htmlString isEqualToString:@""])) {
-        [_webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:_urlStr]];
+        [_wkWebView loadHTMLString:htmlString baseURL:[NSURL URLWithString:_urlStr]];
     }else{
         NSURL *url = [NSURL URLWithString:_urlStr];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        [_webView loadRequest:request];
+        [_wkWebView loadRequest:request];
         [self writeToCache];
     }
+     */
 
 }
 /**
@@ -108,7 +133,7 @@
     NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask, YES) objectAtIndex:0];
     [fileManager createDirectoryAtPath:[cachesPath stringByAppendingString:@"/Caches"]withIntermediateDirectories:YES attributes:nil error:nil];
     //写入路径
-    NSString * path = [cachesPath stringByAppendingString:[NSString stringWithFormat:@"/Caches/healthProject.html"]];
+    NSString * path = [cachesPath stringByAppendingString:[NSString stringWithFormat:@"/Caches/health.html"]];
     [htmlResponseStr writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 
@@ -156,6 +181,10 @@
 -(void)dealloc{
     NSLog(@"FirstPageViewController dealloc");
 }
+//- (void)runJS:(NSString *)js completionHandler:(void (^ _Nullable)(_Nullable id message, NSError * _Nullable error))completionHandler
+//{
+//    [self.wkWebView evaluateJavaScript:js completionHandler:completionHandler];
+//}
 /*
 #pragma mark - Navigation
 
