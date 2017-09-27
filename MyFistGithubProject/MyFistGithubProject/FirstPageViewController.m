@@ -11,6 +11,7 @@
 #import "YTImagePlaceHolderManager.h"
 #import <WebKit/WebKit.h>
 #import "FLBaseWebController.h"
+#import "ZipArchive.h"
 
 @interface FirstPageViewController ()<UIWebViewDelegate>
 @property (nonatomic,strong)UILabel *rotateLabel;
@@ -73,11 +74,28 @@
     [self.startButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [self.view addSubview:self.startButton];
     */
+    
+    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES) objectAtIndex:0];
+    NSLog(@"documentPath=====%@",documentPath);
+    // zip 文件路径
+    NSString *filePath = [documentPath stringByAppendingPathComponent:@"html.zip"];
+    
+    ZipArchive *zip = [[ZipArchive alloc] init];
+    BOOL zipOpenResult = [zip UnzipOpenFile:filePath];
+    BOOL zipUnZipResult = [zip UnzipFileTo:documentPath overWrite:YES];
+    // 删除包文件
+    NSString *result = [NSString stringWithFormat:@"zip解压结果: 开始解压:%d  解压结果:%d", zipOpenResult, zipUnZipResult];
+    NSLog(@"zip 解压结果====%@",result);
+    NSString *baseUrl = [documentPath stringByAppendingPathComponent:@"html"];
+    NSString *htmlPath = [baseUrl stringByAppendingPathComponent:@"jumpApp.html"];
+    NSURL *baseURL = [NSURL fileURLWithPath:baseUrl];
+    
     UIWebView *webview = [[UIWebView alloc] initWithFrame:self.view.bounds];
-    NSString *path = [[NSBundle mainBundle] bundlePath];
-    NSURL *baseURL = [NSURL fileURLWithPath:path];
-    NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@"jumpApp"
-                                                          ofType:@"html"];
+//    NSString *path = [[NSBundle mainBundle] bundlePath];
+//    NSURL *baseURL = [NSURL fileURLWithPath:path];
+//    NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@"jumpApp"
+//                                                          ofType:@"html"];
+    
     NSString * htmlCont = [NSString stringWithContentsOfFile:htmlPath
                                                     encoding:NSUTF8StringEncoding
                                                        error:nil];

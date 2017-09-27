@@ -215,7 +215,6 @@ NSLog(@"\\n 定以后：------------------------------------\\n\\
   - (void)viewDidLoad {
       
       [super viewDidLoad];
-      
       _loadingView = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 154, 154)];
       [_loadingView setImage:[UIImage imageNamed:@"icon_me"]];
       
