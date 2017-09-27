@@ -91,11 +91,12 @@
     NSURL *baseURL = [NSURL fileURLWithPath:baseUrl];
     
     UIWebView *webview = [[UIWebView alloc] initWithFrame:self.view.bounds];
-//    NSString *path = [[NSBundle mainBundle] bundlePath];
-//    NSURL *baseURL = [NSURL fileURLWithPath:path];
-//    NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@"jumpApp"
-//                                                          ofType:@"html"];
-    
+    /* 加载本地bundle 文件
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSURL *baseURL = [NSURL fileURLWithPath:path];
+    NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@"jumpApp"
+                                                          ofType:@"html"];
+    */
     NSString * htmlCont = [NSString stringWithContentsOfFile:htmlPath
                                                     encoding:NSUTF8StringEncoding
                                                        error:nil];
@@ -103,17 +104,17 @@
     [self.view addSubview:webview];
     
    
-    
-//    _wkWebView.scrollView.delegate = self;
-//    _wkWebView.UIDelegate = self;
-//    _wkWebView.navigationDelegate = self;
-//    _wkWebView.allowsBackForwardNavigationGestures = YES;
-//    NSURL *url = [NSURL URLWithString:_urlStr];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    [_wkWebView loadRequest:request];
-//    [self.view addSubview:_wkWebView];
-//
-    
+    /* wkwebview  test
+    _wkWebView.scrollView.delegate = self;
+    _wkWebView.UIDelegate = self;
+    _wkWebView.navigationDelegate = self;
+    _wkWebView.allowsBackForwardNavigationGestures = YES;
+    NSURL *url = [NSURL URLWithString:_urlStr];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [_wkWebView loadRequest:request];
+    [self.view addSubview:_wkWebView];
+ */
+
 //    FLBaseWebController *webViewController = [[FLBaseWebController alloc] initWithURLStr:_urlStr title:@"test"];
 //    [self.navigationController pushViewController:webViewController animated:YES];
     
