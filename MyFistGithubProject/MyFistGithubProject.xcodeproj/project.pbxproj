@@ -27,7 +27,14 @@
 		754414831F7B4185000B6290 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 7544147B1F7B4185000B6290 /* unzip.c */; };
 		754414841F7B4185000B6290 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 7544147D1F7B4185000B6290 /* zip.c */; };
 		754414851F7B4185000B6290 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 754414801F7B4185000B6290 /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7588C8AB1FA2E84E00AABE82 /* jumpApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 7588C8AA1FA2E84E00AABE82 /* jumpApp.html */; };
+		7588C8AD1FA2E89E00AABE82 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7588C8AC1FA2E89E00AABE82 /* CoreTelephony.framework */; };
 		75C437E61F7A2ED800A2C5BB /* FLBaseWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C437E51F7A2ED800A2C5BB /* FLBaseWebController.m */; };
+		75DA8F0F1FA6D0C700D3FC31 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DA8F0E1FA6D0C700D3FC31 /* MobileCoreServices.framework */; };
+		75EE55771F8F328E000A06DE /* jumpApp.html in Resources */ = {isa = PBXBuildFile; fileRef = 75EE55751F8F1CCE000A06DE /* jumpApp.html */; };
+		75EE55781F8F3296000A06DE /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 75EE55761F8F1E3C000A06DE /* timg.jpeg */; };
+		75EE557B1F8F62D0000A06DE /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 75EE557A1F8F62D0000A06DE /* index.js */; };
+		75EE557C1F8F6337000A06DE /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 75EE55791F8F62D0000A06DE /* index.html */; };
 		FD004FEAE915471E5422D6B9 /* libPods-MyFistGithubProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3340295963BDC0BE6BD038B8 /* libPods-MyFistGithubProjectTests.a */; };
 /* End PBXBuildFile section */
 
@@ -90,8 +97,16 @@
 		7544147E1F7B4185000B6290 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		7544147F1F7B4185000B6290 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		754414801F7B4185000B6290 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
+		7588C8AA1FA2E84E00AABE82 /* jumpApp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jumpApp.html; sourceTree = "<group>"; };
+		7588C8AC1FA2E89E00AABE82 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		7588C8AE1FA317F300AABE82 /* MJGAvailability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJGAvailability.h; sourceTree = "<group>"; };
 		75C437E41F7A2ED800A2C5BB /* FLBaseWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBaseWebController.h; sourceTree = "<group>"; };
 		75C437E51F7A2ED800A2C5BB /* FLBaseWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBaseWebController.m; sourceTree = "<group>"; };
+		75DA8F0E1FA6D0C700D3FC31 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		75EE55751F8F1CCE000A06DE /* jumpApp.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = jumpApp.html; sourceTree = "<group>"; };
+		75EE55761F8F1E3C000A06DE /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = timg.jpeg; sourceTree = "<group>"; };
+		75EE55791F8F62D0000A06DE /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		75EE557A1F8F62D0000A06DE /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		7CBD9BD87065612CACD2728D /* libPods-MyFistGithubProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyFistGithubProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7153CBB2DBE62C9E8F3412B /* Pods-MyFistGithubProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFistGithubProjectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFistGithubProjectUITests/Pods-MyFistGithubProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B89EAAD86C89381F4E0132D5 /* Pods-MyFistGithubProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFistGithubProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFistGithubProject/Pods-MyFistGithubProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +119,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75DA8F0F1FA6D0C700D3FC31 /* MobileCoreServices.framework in Frameworks */,
+				7588C8AD1FA2E89E00AABE82 /* CoreTelephony.framework in Frameworks */,
 				4D9288BA57A1EAFB5BE7D0FB /* libPods-MyFistGithubProject.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,6 +147,8 @@
 		0CD90BD479F0C210CF6686D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				75DA8F0E1FA6D0C700D3FC31 /* MobileCoreServices.framework */,
+				7588C8AC1FA2E89E00AABE82 /* CoreTelephony.framework */,
 				7CBD9BD87065612CACD2728D /* libPods-MyFistGithubProject.a */,
 				3340295963BDC0BE6BD038B8 /* libPods-MyFistGithubProjectTests.a */,
 				E3C0D543A9E1E81A05CF556D /* libPods-MyFistGithubProjectUITests.a */,
@@ -162,6 +181,7 @@
 		0E4502221F21D3E1005C7B6C /* MyFistGithubProject */ = {
 			isa = PBXGroup;
 			children = (
+				7588C8AE1FA317F300AABE82 /* MJGAvailability.h */,
 				754414741F7B4185000B6290 /* Zip */,
 				75C437E41F7A2ED800A2C5BB /* FLBaseWebController.h */,
 				75C437E51F7A2ED800A2C5BB /* FLBaseWebController.m */,
@@ -175,6 +195,11 @@
 				752250081F5E771000BC4A1C /* FirstPageViewController.m */,
 				0E4502591F21D445005C7B6C /* CustomView.h */,
 				0E45025A1F21D445005C7B6C /* CustomView.m */,
+				75EE55791F8F62D0000A06DE /* index.html */,
+				75EE557A1F8F62D0000A06DE /* index.js */,
+				75EE55751F8F1CCE000A06DE /* jumpApp.html */,
+				7588C8AA1FA2E84E00AABE82 /* jumpApp.html */,
+				75EE55761F8F1E3C000A06DE /* timg.jpeg */,
 				0E45025B1F21D445005C7B6C /* CustomView+test.h */,
 				0E45025C1F21D445005C7B6C /* CustomView+test.m */,
 				0E4502321F21D3E1005C7B6C /* Assets.xcassets */,
@@ -377,7 +402,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75EE557C1F8F6337000A06DE /* index.html in Resources */,
+				75EE55781F8F3296000A06DE /* timg.jpeg in Resources */,
+				75EE55771F8F328E000A06DE /* jumpApp.html in Resources */,
 				7522500C1F5E7F3C00BC4A1C /* Main.storyboard in Resources */,
+				7588C8AB1FA2E84E00AABE82 /* jumpApp.html in Resources */,
+				75EE557B1F8F62D0000A06DE /* index.js in Resources */,
 				0E4502361F21D3E1005C7B6C /* LaunchScreen.storyboard in Resources */,
 				0E4502331F21D3E1005C7B6C /* Assets.xcassets in Resources */,
 			);

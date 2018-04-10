@@ -8,10 +8,13 @@
 
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
-
+//#define __IPHONE_OS_VERSION_SOFT_MAX_REQUIRED __IPHONE_8_0
+#define __IPHONE_OS_VERSION_MIN_REQUIRED __IPHONE_8_0
+#import "MJGAvailability.h"
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
+#import "ViewController.h"
 #define __MainScreenFrame   [[UIScreen mainScreen] bounds]
 #define __MainScreen_Width  ((__MainScreenFrame.size.width)<(__MainScreenFrame.size.height)?(__MainScreenFrame.size.width):(__MainScreenFrame.size.height))
 #define __MainScreen_Height ((__MainScreenFrame.size.height)>(__MainScreenFrame.size.width)?(__MainScreenFrame.size.height):(__MainScreenFrame.size.width))

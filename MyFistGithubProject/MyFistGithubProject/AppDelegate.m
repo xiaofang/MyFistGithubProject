@@ -9,9 +9,12 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "PrefixHeader.pch"
+#import <CoreTelephony/CTCellularData.h>
 @interface AppDelegate ()
 @property(nonatomic,strong)ViewController *rootViewController;
+@property(nonatomic,strong)CTCellularData *cellularData;
 @end
+
 
 @implementation AppDelegate
 
@@ -24,10 +27,40 @@
     _window.backgroundColor = [UIColor whiteColor];
     _window.rootViewController = navgiationController;
     [_window makeKeyAndVisible];
+    [self setUpCellularData];
+    [self requestData];
+    
     
     return YES;
 }
-
+-(void)requestData{
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://upload.simuyun.com/app/h5-storage/healthZipConfig.json"]];
+    NSURLSessionDataTask *dataTask =  [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
+        NSLog(@"response=======%@",response);
+    }];
+    [dataTask resume];
+}
+-(void)setUpCellularData{
+    _cellularData = [[CTCellularData alloc] init];
+    _cellularData.cellularDataRestrictionDidUpdateNotifier =  ^(CTCellularDataRestrictedState state){
+        //状态改变时进行相关操作
+        NSLog(@"state=======%ld",state);
+    };
+    CTCellularDataRestrictedState state = _cellularData.restrictedState;
+    switch (state) {
+        case kCTCellularDataRestricted:
+            NSLog(@"Restricrted");
+            break;
+        case kCTCellularDataNotRestricted:
+            NSLog(@"Not Restricted");
+            break;
+        case kCTCellularDataRestrictedStateUnknown:
+            NSLog(@"Unknown");
+            break;
+        default:
+            break;
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

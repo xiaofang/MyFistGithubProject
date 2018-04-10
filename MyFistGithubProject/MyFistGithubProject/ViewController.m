@@ -37,6 +37,7 @@
 @property (nonatomic,strong)UILabel *rotateLabel;
 @property(nonatomic,strong)UIButton *universalLinkButton;
 @property(nonatomic,strong)UIButton *loadHtmlButton;
+@property(nonatomic,strong)UIButton *testButton;
 
 
 
@@ -74,7 +75,9 @@ NSLog(@"\\n 定以后：------------------------------------\\n\\
       _startRecordButton.layer.cornerRadius = 5;
       _startRecordButton.layer.borderWidth = 0.5;
       _startRecordButton.layer.borderColor = [UIColor colorWithRed:231/255.0 green:231/255.0 blue:231/255.0 alpha:1.0].CGColor;
-//      [self.view addSubview:self.startRecordButton];
+      [self.view addSubview:self.startRecordButton];
+      
+      
       
       _startPlayButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 400, 300, 40)];
       [_startPlayButton setTitle:@"播放录音" forState:UIControlStateNormal];
@@ -84,14 +87,23 @@ NSLog(@"\\n 定以后：------------------------------------\\n\\
       _startPlayButton.layer.cornerRadius = 5;
       _startPlayButton.layer.borderWidth = 0.5;
       _startPlayButton.layer.borderColor = [UIColor colorWithRed:231/255.0 green:231/255.0 blue:231/255.0 alpha:1.0].CGColor;
-//      [self.view addSubview:self.startPlayButton];
-      
+      [self.view addSubview:self.startPlayButton];
+      [_startPlayButton.widthAnchor constraintEqualToConstant:20].active = YES;
+//      NSString *str = @"fjajfjjjjjhttp";
+//      NSUserActivity *userActivity = [[NSUserActivity alloc] init];
       _universalLinkButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 100, 300, 40)];
       [_universalLinkButton setTitle:@"test universal Links" forState:UIControlStateNormal];
       [_universalLinkButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
       _universalLinkButton.tag = 1000;
       [_universalLinkButton addTarget:self action:@selector(handButtonClick:) forControlEvents:UIControlEventTouchUpInside];
       [self.view addSubview:self.universalLinkButton];
+      
+      _loadHtmlButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 170, 300, 40)];
+      [_loadHtmlButton setTitle:@"test cache html" forState:UIControlStateNormal];
+      [_loadHtmlButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+      _loadHtmlButton.tag = 1001;
+      [_loadHtmlButton addTarget:self action:@selector(handButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+      [self.view addSubview:self.loadHtmlButton];
       
       _loadHtmlButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 170, 300, 40)];
       [_loadHtmlButton setTitle:@"test cache html" forState:UIControlStateNormal];
@@ -209,10 +221,7 @@ NSLog(@"\\n 定以后：------------------------------------\\n\\
     }
     
 }
-  
-  
-  
-  - (void)viewDidLoad {
+- (void)viewDidLoad {
       
       [super viewDidLoad];
       _loadingView = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 154, 154)];

@@ -23,6 +23,7 @@
 @property (nonatomic,copy) NSString * urlStr;
 @property (nonatomic,strong)UIWebView *webView;
 @property (nonatomic,strong)WKWebView *wkWebView;
+@property (nonatomic,strong)NSMutableArray *allHtmlArray;
 @end
 
 @implementation FirstPageViewController
@@ -31,6 +32,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"二级页面";
+    _allHtmlArray = [[NSMutableArray alloc] init];
     _urlStr = @"https://app.simuyun.com/app6.0/biz/mine/mine-help.html";
 //    _urlStr = @"https://app.simuyun.com//app6.0/biz/assesment/index.html";
 //    _urlStr = @"https://app.simuyun.com/app6.0/biz/product/new_detail_toc.html?id=150611c699c14587965ca9b89a1a95b4&category=6&share=1&type=1&userid=46669bc4f1c346609186a7154ba2980b&from=singlemessage&isappinstalled=1";
@@ -78,7 +80,7 @@
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES) objectAtIndex:0];
     NSLog(@"documentPath=====%@",documentPath);
     // zip 文件路径
-    NSString *filePath = [documentPath stringByAppendingPathComponent:@"html.zip"];
+    NSString *filePath = [documentPath stringByAppendingPathComponent:@"preload.zip"];
     
     ZipArchive *zip = [[ZipArchive alloc] init];
     BOOL zipOpenResult = [zip UnzipOpenFile:filePath];
@@ -86,34 +88,48 @@
     // 删除包文件
     NSString *result = [NSString stringWithFormat:@"zip解压结果: 开始解压:%d  解压结果:%d", zipOpenResult, zipUnZipResult];
     NSLog(@"zip 解压结果====%@",result);
-    NSString *baseUrl = [documentPath stringByAppendingPathComponent:@"html"];
-    NSString *htmlPath = [baseUrl stringByAppendingPathComponent:@"jumpApp.html"];
-    NSURL *baseURL = [NSURL fileURLWithPath:baseUrl];
+    [self searchAllHtmlFileWithPath:[documentPath stringByAppendingPathComponent:@"preload"]];
+//    NSString *baseUrl = [documentPath stringByAppendingPathComponent:@"html"];
+//    NSString *htmlPath = [baseUrl stringByAppendingPathComponent:@"jumpApp.html"];
+//    NSURL *baseURL = [NSURL fileURLWithPath:baseUrl];
+
+    
     
     UIWebView *webview = [[UIWebView alloc] initWithFrame:self.view.bounds];
-    /* 加载本地bundle 文件
+   // 加载本地bundle 文件
     NSString *path = [[NSBundle mainBundle] bundlePath];
     NSURL *baseURL = [NSURL fileURLWithPath:path];
-    NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@"jumpApp"
+    NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@"healthConsultation2--iOS"
                                                           ofType:@"html"];
-    */
+    
     NSString * htmlCont = [NSString stringWithContentsOfFile:htmlPath
                                                     encoding:NSUTF8StringEncoding
                                                        error:nil];
-    [webview loadHTMLString:htmlCont baseURL:baseURL];
-    [self.view addSubview:webview];
-    
+//    [webview loadHTMLString:htmlCont baseURL:baseURL];
+//    [self.view addSubview:webview];
+//
    
-    /* wkwebview  test
-    _wkWebView.scrollView.delegate = self;
-    _wkWebView.UIDelegate = self;
-    _wkWebView.navigationDelegate = self;
-    _wkWebView.allowsBackForwardNavigationGestures = YES;
-    NSURL *url = [NSURL URLWithString:_urlStr];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [_wkWebView loadRequest:request];
+    WKWebViewConfiguration * configuration = [[WKWebViewConfiguration alloc]init];
+    configuration.processPool = [[WKProcessPool alloc] init];
+    
+    WKUserContentController *userC = [[WKUserContentController alloc] init];
+    configuration.userContentController = userC;
+    _wkWebView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:configuration];
+    [_wkWebView loadHTMLString:htmlCont baseURL:baseURL];
     [self.view addSubview:_wkWebView];
- */
+
+    //wkwebview  test
+//    _wkWebView.scrollView.delegate = self;
+//    _wkWebView.UIDelegate = self;
+//    _wkWebView.navigationDelegate = self;
+    _wkWebView.allowsBackForwardNavigationGestures = YES;
+//    NSURL *url = [NSURL URLWithString:_urlStr];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:htmlPath];
+//    [NSURLRequest requestWithURL: cachePolicy:NSURLCacheStoragePolicy timeoutInterval:<#(NSTimeInterval)#>]
+//    [_wkWebView loadRequest:request];
+//    [_wkWebView loadFileURL:[NSURL URLWithString:htmlPath] allowingReadAccessToURL:baseURL];
+   
+ 
 
 //    FLBaseWebController *webViewController = [[FLBaseWebController alloc] initWithURLStr:_urlStr title:@"test"];
 //    [self.navigationController pushViewController:webViewController animated:YES];
@@ -154,6 +170,31 @@
     //写入路径
     NSString * path = [cachesPath stringByAppendingString:[NSString stringWithFormat:@"/Caches/health.html"]];
     [htmlResponseStr writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+}
+- (void)searchAllHtmlFileWithPath:(NSString *) path {
+    NSFileManager * fileManger = [NSFileManager defaultManager];
+    BOOL isDir = NO;
+    BOOL isExist = [fileManger fileExistsAtPath:path isDirectory:&isDir];
+    if (isExist) {
+        if (isDir) {
+            NSArray * dirArray = [fileManger contentsOfDirectoryAtPath:path error:nil];
+            NSString * subPath = nil;
+            for (NSString * str in dirArray) {
+                subPath  = [path stringByAppendingPathComponent:str];
+                BOOL issubDir = NO;
+                [fileManger fileExistsAtPath:subPath isDirectory:&issubDir];
+                [self searchAllHtmlFileWithPath:subPath];
+            }
+        }else{
+            NSString *fileName = [[path componentsSeparatedByString:@"/"] lastObject];
+            if ([fileName hasSuffix:@".html"]) {
+                NSLog(@"path=======%@", path);
+                [self.allHtmlArray addObject:path];
+            }
+        }
+    }else{
+        NSLog(@"this path is not exist!");
+    }
 }
 
 -(void)log{
