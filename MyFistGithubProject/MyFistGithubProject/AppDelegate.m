@@ -30,6 +30,8 @@
     [self setUpCellularData];
     [self requestData];
     
+    NSLog(@"test====第一次修改");
+    
     
     return YES;
 }
